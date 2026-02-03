@@ -4,10 +4,11 @@ import SvgClose from "./svg/SvgClose";
 import SvgPencil from "./svg/SvgPencil";
 
 export default function TodoListItem({
-    todo, toggleTodo,
+    todo, toggleTodo, deleteTodo,
 }: { 
     todo: Todo;
     toggleTodo: (id: number) => void;
+    deleteTodo: (id: number) => void;
 }) {
     return (
         // 할 일을 완료하면 .todo__item--complete 추가
@@ -23,7 +24,7 @@ export default function TodoListItem({
                 <Button className="todo__action-button">
                     <SvgPencil />
                 </Button>
-                <Button className="todo__action-button">
+                <Button className="todo__action-button" onClick={() => deleteTodo(todo.id)}>
                     <SvgClose />
                 </Button>
             </div>
