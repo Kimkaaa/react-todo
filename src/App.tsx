@@ -25,11 +25,17 @@ export default function App() {
   const deleteTodo = (id: number) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
   };
+  const modifyTodo = (id: number, title: string) => {
+    setTodos((todos) => 
+      todos.map((todo) => (todo.id === id ? { ...todo, title } : todo))
+    );
+  };
   return (
     <div className="todo">
       <TodoHeader />
       <TodoEditor addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} 
+        deleteTodo={deleteTodo} modifyTodo={modifyTodo} />
     </div>
   );
 }
